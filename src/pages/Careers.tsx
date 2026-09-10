@@ -2,6 +2,8 @@ import { motion } from 'motion/react';
 import { CTASection } from '../components/ui/CTASection';
 import { Button } from '../components/ui/Button';
 
+const CAREER_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdUKOZHBw_iQlRlc4PHDRZnxl2_4ggMj33waLeBbH0n_MwH2A/viewform?usp=header";
+
 export function Careers() {
   const benefits = [
     {
@@ -31,7 +33,7 @@ export function Careers() {
   ];
 
   return (
-    <div className="flex flex-col w-full text-white">
+    <div className="flex flex-col w-full">
       {/* HERO */}
       <section className="pt-24 pb-20 md:pt-32 md:pb-28 px-6 border-b border-white/10">
         <div className="container mx-auto max-w-4xl text-center">
@@ -40,10 +42,10 @@ export function Careers() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6 text-white">
+            <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6 text-heading">
               Build what's next with us.
             </h1>
-            <p className="text-xl md:text-2xl text-zinc-300 leading-relaxed">
+            <p className="text-xl md:text-2xl text-body leading-relaxed">
               We're building a team of people who care about technology, creativity, and doing meaningful work for modern businesses.
             </p>
           </motion.div>
@@ -54,18 +56,18 @@ export function Careers() {
       <section className="py-24 md:py-32 px-6">
         <div className="container mx-auto max-w-7xl">
           <div className="mb-16 max-w-3xl">
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-white">Why join ZYQITEK?</h2>
-            <p className="text-xl text-zinc-300">We believe in creating an environment where talented individuals can do their best work.</p>
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-heading">Why join ZYQITEK?</h2>
+            <p className="text-xl text-body">We believe in creating an environment where talented individuals can do their best work.</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {benefits.map((benefit, idx) => (
-              <div key={idx} className="bg-zinc-900/60 backdrop-blur-xl rounded-3xl p-8 md:p-10 border border-white/12 hover:border-white/25 hover:bg-zinc-900/75 transition-all duration-300 text-white shadow-xl">
-                <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-6 font-bold bg-white/10 border border-white/15 text-white backdrop-blur-md">
+              <div key={idx} className="bg-surface rounded-3xl p-8 md:p-10 border border-white/10 hover:border-white/20 hover:bg-surface/80 transition-all duration-300 shadow-xl">
+                <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-6 font-bold bg-white/5 border border-white/10 text-accent backdrop-blur-md">
                   {idx + 1}
                 </div>
-                <h3 className="text-2xl font-bold tracking-tight text-white mb-4">{benefit.title}</h3>
-                <p className="text-zinc-300 text-base leading-relaxed">{benefit.desc}</p>
+                <h3 className="text-2xl font-bold tracking-tight text-heading mb-4">{benefit.title}</h3>
+                <p className="text-body text-base leading-relaxed">{benefit.desc}</p>
               </div>
             ))}
           </div>
@@ -73,20 +75,20 @@ export function Careers() {
       </section>
 
       {/* APPLICATION SECTION */}
-      <section className="py-24 md:py-32 px-6 border-t border-white/10 text-white">
+      <section className="py-24 md:py-32 px-6 border-t border-white/10">
         <div className="container mx-auto max-w-4xl text-center">
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-white">Think you'd be a good fit?</h2>
-          <p className="text-xl text-zinc-300 mb-12 max-w-2xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-heading">Think you'd be a good fit?</h2>
+          <p className="text-xl text-body mb-12 max-w-2xl mx-auto">
             Tell us what you can bring to ZYQITEK. We are always looking for talented developers, designers, and marketers.
           </p>
           
-          <div className="bg-zinc-900/70 backdrop-blur-xl border border-white/15 rounded-3xl p-8 md:p-12 text-left shadow-2xl">
-            <h3 className="text-2xl font-bold mb-4 text-white">General Application</h3>
-            <p className="text-zinc-300 mb-8 leading-relaxed">
+          <div className="bg-surface border border-white/10 rounded-3xl p-8 md:p-12 text-left shadow-2xl max-w-3xl mx-auto">
+            <h3 className="text-2xl font-bold mb-4 text-heading">General Application</h3>
+            <p className="text-body mb-8 leading-relaxed">
               Send us your portfolio, GitHub, or resume along with a brief introduction about yourself and how you can contribute to our team.
             </p>
-            <Button href="mailto:careers@zyqitek.com" variant="primary" className="w-full sm:w-auto text-lg px-8 py-4">
-              Apply via Email
+            <Button href={CAREER_FORM_URL} variant="primary" className="w-full sm:w-auto text-lg px-8 py-4">
+              Apply Now
             </Button>
           </div>
         </div>

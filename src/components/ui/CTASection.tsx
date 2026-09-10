@@ -13,16 +13,14 @@ export function CTASection({ heading, subheading, primaryCtaText, primaryCtaLink
   return (
     <section className="py-20 md:py-28 relative overflow-hidden" id="contact">
       <div className="container mx-auto px-6 max-w-5xl relative z-10">
-        <div className="bg-zinc-900/55 backdrop-blur-2xl border border-white/12 rounded-3xl p-10 md:p-16 text-center relative overflow-hidden shadow-2xl">
+        <div className="bg-surface/50 backdrop-blur-2xl border border-white/10 rounded-3xl p-10 md:p-16 text-center relative overflow-hidden shadow-2xl">
           {/* Subtle overhead spotlight inside CTA card */}
-          <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-96 h-48 bg-white/10 blur-3xl pointer-events-none rounded-full" />
+          <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-96 h-48 bg-white/5 blur-3xl pointer-events-none rounded-full" />
           
-          <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-white via-zinc-100 to-zinc-400">
-              {heading}
-            </span>
+          <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-6 text-heading">
+            {heading}
           </h2>
-          <p className="text-xl md:text-2xl text-zinc-300 mb-10 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl md:text-2xl text-body mb-10 max-w-3xl mx-auto leading-relaxed">
             {subheading}
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 relative z-10">

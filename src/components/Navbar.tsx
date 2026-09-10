@@ -6,6 +6,8 @@ import { cn } from './ui/utils';
 import { motion, AnimatePresence } from 'motion/react';
 import { ZyqitekLogo } from './ZyqitekLogo';
 
+const CLIENT_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSe-L3qZRRmCyVGZgy6tZZ080dP-8mSh2X6AWNrAloHcNAD6Nw/viewform?usp=header";
+
 const navLinks = [
   { name: 'Home', path: '/' },
   { name: 'Services', path: '/services' },
@@ -35,20 +37,21 @@ export function Navbar() {
   return (
     <header 
       className={cn(
-        'sticky top-0 z-50 flex items-center justify-between px-6 md:px-10 py-5 transition-all duration-300',
+        'sticky z-50 flex items-center justify-between px-6 md:px-8 py-4 transition-all duration-300',
+        'md:mx-auto md:w-[95%] md:max-w-6xl',
         isScrolled
-          ? 'bg-zinc-950/80 backdrop-blur-xl border-b border-white/10 shadow-2xl shadow-black/60'
-          : 'bg-zinc-950/50 backdrop-blur-md border-b border-white/10'
+          ? 'top-0 md:top-6 bg-surface/85 backdrop-blur-2xl border-b md:border border-white/10 shadow-2xl shadow-black/80 md:rounded-full'
+          : 'top-0 md:top-6 bg-surface/30 backdrop-blur-xl border-b md:border border-white/5 md:rounded-full'
       )}
     >
       <div className="flex items-center gap-10">
-        <Link to="/" className="flex items-center gap-2.5 text-2xl font-black tracking-tighter text-white z-50 group">
-          <ZyqitekLogo className="w-8 h-8 transition-transform duration-200 group-hover:scale-105" />
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-white via-zinc-100 to-zinc-400">ZYQITEK</span>
+        <Link to="/" className="flex items-center gap-2.5 text-2xl font-black tracking-tighter text-heading z-50 group">
+          <ZyqitekLogo className="w-8 h-8 transition-transform duration-300 group-hover:scale-105" />
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-heading via-zinc-200 to-body group-hover:via-white transition-all">ZYQITEK</span>
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-1.5 text-sm font-medium">
+        <nav className="hidden md:flex items-center gap-2 text-sm font-medium">
           {navLinks.map((link) => {
             const isActive = location.pathname === link.path;
             return (
@@ -56,10 +59,10 @@ export function Navbar() {
                 key={link.path} 
                 to={link.path}
                 className={cn(
-                  "px-3.5 py-1.5 rounded-lg transition-all duration-150",
+                  "px-4 py-2 rounded-full transition-all duration-200",
                   isActive 
-                    ? "text-white font-semibold bg-white/15 shadow-sm border border-white/10" 
-                    : "text-zinc-300 hover:text-white hover:bg-white/10"
+                    ? "text-heading font-semibold bg-white/10 shadow-[0_0_15px_rgba(255,255,255,0.05)] border border-white/10" 
+                    : "text-body hover:text-heading hover:bg-white/5"
                 )}
               >
                 {link.name}
@@ -70,12 +73,12 @@ export function Navbar() {
       </div>
 
       <div className="hidden md:block">
-        <Button href="/#contact" variant="primary" className="px-6 py-2 rounded-full text-sm">Let's Work Together</Button>
+        <Button href={CLIENT_FORM_URL} variant="primary" className="px-6 py-2 rounded-full text-sm">Let's Work Together</Button>
       </div>
 
       {/* Mobile Menu Toggle */}
       <button 
-        className="md:hidden z-50 p-2 text-white"
+        className="md:hidden z-50 p-2 text-heading"
         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         aria-label="Toggle Menu"
       >
@@ -90,7 +93,7 @@ export function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 top-0 pt-24 bg-zinc-950/95 backdrop-blur-2xl border-b border-white/10 z-40 flex flex-col px-6 pb-6 md:hidden overflow-y-auto"
+            className="fixed inset-0 top-0 pt-24 bg-bg-dark/95 backdrop-blur-2xl border-b border-white/10 z-40 flex flex-col px-6 pb-6 md:hidden overflow-y-auto"
           >
             <nav className="flex flex-col space-y-4 text-xl font-display font-medium mb-12">
               {navLinks.map((link) => {
@@ -102,8 +105,8 @@ export function Navbar() {
                     className={cn(
                       "py-2 transition-colors",
                       isActive 
-                        ? "text-white font-bold border-l-2 border-white pl-3 bg-white/5 rounded-r-lg" 
-                        : "text-zinc-400 hover:text-white pl-3"
+                        ? "text-heading font-bold border-l-2 border-accent pl-3 bg-white/5 rounded-r-lg" 
+                        : "text-body hover:text-heading pl-3"
                     )}
                   >
                     {link.name}
@@ -112,7 +115,7 @@ export function Navbar() {
               })}
             </nav>
             <div className="mt-auto">
-              <Button href="/#contact" variant="primary" className="w-full">Let's Work Together</Button>
+              <Button href={CLIENT_FORM_URL} variant="primary" className="w-full">Let's Work Together</Button>
             </div>
           </motion.div>
         )}
