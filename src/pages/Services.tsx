@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import { CTASection } from '../components/ui/CTASection';
+import { Reveal } from '../components/ui/Reveal';
 
 const CLIENT_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSe-L3qZRRmCyVGZgy6tZZ080dP-8mSh2X6AWNrAloHcNAD6Nw/viewform?usp=header";
 
@@ -28,15 +29,15 @@ export function Services() {
         {/* DEVELOPMENT & TECHNOLOGY */}
         <section id="development" className="scroll-mt-32">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-            <div className="lg:col-span-5 lg:sticky lg:top-32">
+            <Reveal className="lg:col-span-5 lg:sticky lg:top-32" delay={0.1}>
               <span className="text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-full bg-white/5 border border-white/10 text-muted mb-4 inline-block backdrop-blur-md">Capability 01</span>
               <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight text-heading">Development & Technology</h2>
               <p className="text-xl text-body leading-relaxed">
                 Custom software, web and mobile applications, cloud infrastructure, and intelligent automation built to scale.
               </p>
-            </div>
+            </Reveal>
             
-            <div className="lg:col-span-7 bg-surface p-8 md:p-12 border border-white/10 rounded-3xl shadow-2xl">
+            <Reveal className="lg:col-span-7 bg-surface p-8 md:p-12 border border-white/10 rounded-3xl shadow-2xl" delay={0.2} direction="left">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
                 {[
                   { title: "Custom Software", desc: "Tailored software solutions designed for your specific business logic and workflows." },
@@ -53,22 +54,22 @@ export function Services() {
                   </div>
                 ))}
               </div>
-            </div>
+            </Reveal>
           </div>
         </section>
 
         {/* CREATIVE & BRANDING */}
         <section id="creative" className="scroll-mt-32">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-            <div className="lg:col-span-5 lg:sticky lg:top-32 lg:order-last">
+            <Reveal className="lg:col-span-5 lg:sticky lg:top-32 lg:order-last" delay={0.1}>
               <span className="text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-full bg-white/5 border border-white/10 text-muted mb-4 inline-block backdrop-blur-md">Capability 02</span>
               <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight text-heading">Creative & Branding</h2>
               <p className="text-xl text-body leading-relaxed">
                 Brand identity, interface design, motion, and visual systems that give your business a distinctive, premium presence.
               </p>
-            </div>
+            </Reveal>
             
-            <div className="lg:col-span-7 bg-surface p-8 md:p-12 border border-white/10 rounded-3xl shadow-2xl">
+            <Reveal className="lg:col-span-7 bg-surface p-8 md:p-12 border border-white/10 rounded-3xl shadow-2xl" delay={0.2} direction="right">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
                 {[
                   { title: "Brand Identity", desc: "Defining your core identity, voice, and positioning to stand out in the market." },
@@ -84,22 +85,22 @@ export function Services() {
                   </div>
                 ))}
               </div>
-            </div>
+            </Reveal>
           </div>
         </section>
 
         {/* MARKETING & GROWTH */}
         <section id="growth" className="scroll-mt-32">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-            <div className="lg:col-span-5 lg:sticky lg:top-32">
+            <Reveal className="lg:col-span-5 lg:sticky lg:top-32" delay={0.1}>
               <span className="text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-full bg-white/5 border border-white/10 text-muted mb-4 inline-block backdrop-blur-md">Capability 03</span>
               <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight text-heading">Marketing & Growth</h2>
               <p className="text-xl text-body leading-relaxed">
                 SEO, performance marketing, content strategy, and analytics engineered to drive measurable, sustainable growth.
               </p>
-            </div>
+            </Reveal>
             
-            <div className="lg:col-span-7 bg-surface p-8 md:p-12 border border-white/10 rounded-3xl shadow-2xl">
+            <Reveal className="lg:col-span-7 bg-surface p-8 md:p-12 border border-white/10 rounded-3xl shadow-2xl" delay={0.2} direction="left">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
                 {[
                   { title: "SEO", desc: "Data-driven search engine optimization to improve organic visibility and drive high-intent traffic." },
@@ -115,7 +116,7 @@ export function Services() {
                   </div>
                 ))}
               </div>
-            </div>
+            </Reveal>
           </div>
         </section>
       </div>

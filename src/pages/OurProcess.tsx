@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import { CTASection } from '../components/ui/CTASection';
+import { Reveal } from '../components/ui/Reveal';
 
 const CLIENT_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSe-L3qZRRmCyVGZgy6tZZ080dP-8mSh2X6AWNrAloHcNAD6Nw/viewform?usp=header";
 
@@ -57,12 +58,10 @@ export function OurProcess() {
         <div className="container mx-auto px-6 max-w-4xl">
           <div className="space-y-16 relative before:absolute before:inset-0 before:ml-6 md:before:ml-8 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-white/20 before:via-white/10 before:to-transparent">
             {steps.map((step, index) => (
-              <motion.div 
+              <Reveal 
                 key={step.num}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                delay={0}
+                direction={index % 2 === 0 ? "right" : "left"}
                 className={`relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active`}
               >
                 <div className="flex items-center justify-center w-12 h-12 rounded-full border-4 border-bg-dark bg-accent text-white shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow-xl font-black text-sm z-10 ml-0 md:ml-auto">
@@ -72,7 +71,7 @@ export function OurProcess() {
                   <h3 className="font-bold text-2xl tracking-tight text-heading mb-3">{step.title}</h3>
                   <p className="text-body text-base leading-relaxed">{step.desc}</p>
                 </div>
-              </motion.div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -81,13 +80,15 @@ export function OurProcess() {
       {/* COMMUNICATION SECTION */}
       <section className="py-24 border-t border-white/10">
         <div className="container mx-auto px-6 max-w-4xl text-center">
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-8 text-heading">
-            Clear communication. <br/>
-            <span className="text-heading">No unnecessary complexity.</span>
-          </h2>
-          <p className="text-xl text-body leading-relaxed max-w-2xl mx-auto">
-            We believe that great work requires great communication. ZYQITEK keeps projects organized, updates frequent, and communication clear so you always know exactly where things stand.
-          </p>
+          <Reveal>
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-8 text-heading">
+              Clear communication. <br/>
+              <span className="text-heading">No unnecessary complexity.</span>
+            </h2>
+            <p className="text-xl text-body leading-relaxed max-w-2xl mx-auto">
+              We believe that great work requires great communication. ZYQITEK keeps projects organized, updates frequent, and communication clear so you always know exactly where things stand.
+            </p>
+          </Reveal>
         </div>
       </section>
 

@@ -1,6 +1,7 @@
 import { motion } from 'motion/react';
 import { CTASection } from '../components/ui/CTASection';
 import { Button } from '../components/ui/Button';
+import { Reveal } from '../components/ui/Reveal';
 
 const CAREER_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdUKOZHBw_iQlRlc4PHDRZnxl2_4ggMj33waLeBbH0n_MwH2A/viewform?usp=header";
 
@@ -55,20 +56,22 @@ export function Careers() {
       {/* WHY JOIN ZYQITEK */}
       <section className="py-24 md:py-32 px-6">
         <div className="container mx-auto max-w-7xl">
-          <div className="mb-16 max-w-3xl">
+          <Reveal className="mb-16 max-w-3xl">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-heading">Why join ZYQITEK?</h2>
             <p className="text-xl text-body">We believe in creating an environment where talented individuals can do their best work.</p>
-          </div>
+          </Reveal>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {benefits.map((benefit, idx) => (
-              <div key={idx} className="bg-surface rounded-3xl p-8 md:p-10 border border-white/10 hover:border-white/20 hover:bg-surface/80 transition-all duration-300 shadow-xl">
-                <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-6 font-bold bg-white/5 border border-white/10 text-accent backdrop-blur-md">
-                  {idx + 1}
+              <Reveal key={idx} delay={idx * 0.1}>
+                <div className="bg-surface rounded-3xl p-8 md:p-10 border border-white/10 hover:border-white/20 hover:bg-surface/80 transition-all duration-300 shadow-xl h-full">
+                  <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-6 font-bold bg-white/5 border border-white/10 text-accent backdrop-blur-md">
+                    {idx + 1}
+                  </div>
+                  <h3 className="text-2xl font-bold tracking-tight text-heading mb-4">{benefit.title}</h3>
+                  <p className="text-body text-base leading-relaxed">{benefit.desc}</p>
                 </div>
-                <h3 className="text-2xl font-bold tracking-tight text-heading mb-4">{benefit.title}</h3>
-                <p className="text-body text-base leading-relaxed">{benefit.desc}</p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -77,20 +80,22 @@ export function Careers() {
       {/* APPLICATION SECTION */}
       <section className="py-24 md:py-32 px-6 border-t border-white/10">
         <div className="container mx-auto max-w-4xl text-center">
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-heading">Think you'd be a good fit?</h2>
-          <p className="text-xl text-body mb-12 max-w-2xl mx-auto">
-            Tell us what you can bring to ZYQITEK. We are always looking for talented developers, designers, and marketers.
-          </p>
-          
-          <div className="bg-surface border border-white/10 rounded-3xl p-8 md:p-12 text-left shadow-2xl max-w-3xl mx-auto">
-            <h3 className="text-2xl font-bold mb-4 text-heading">General Application</h3>
-            <p className="text-body mb-8 leading-relaxed">
-              Send us your portfolio, GitHub, or resume along with a brief introduction about yourself and how you can contribute to our team.
+          <Reveal>
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-heading">Think you'd be a good fit?</h2>
+            <p className="text-xl text-body mb-12 max-w-2xl mx-auto">
+              Tell us what you can bring to ZYQITEK. We are always looking for talented developers, designers, and marketers.
             </p>
-            <Button href={CAREER_FORM_URL} variant="primary" className="w-full sm:w-auto text-lg px-8 py-4">
-              Apply Now
-            </Button>
-          </div>
+            
+            <div className="bg-surface border border-white/10 rounded-3xl p-8 md:p-12 text-left shadow-2xl max-w-3xl mx-auto">
+              <h3 className="text-2xl font-bold mb-4 text-heading">General Application</h3>
+              <p className="text-body mb-8 leading-relaxed">
+                Send us your portfolio, GitHub, or resume along with a brief introduction about yourself and how you can contribute to our team.
+              </p>
+              <Button href={CAREER_FORM_URL} variant="primary" className="w-full sm:w-auto text-lg px-8 py-4">
+                Apply Now
+              </Button>
+            </div>
+          </Reveal>
         </div>
       </section>
 

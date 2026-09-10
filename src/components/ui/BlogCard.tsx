@@ -7,41 +7,32 @@ interface BlogCardProps {
   title: string;
   excerpt: string;
   link: string;
-  isDark?: boolean;
 }
 
-export function BlogCard({ category, title, excerpt, link, isDark = true }: BlogCardProps) {
+export function BlogCard({ category, title, excerpt, link }: BlogCardProps) {
   return (
     <Link to={link} className="group block h-full">
       <article className={cn(
-        "border rounded-3xl p-8 md:p-10 transition-all duration-300 shadow-sm hover:shadow-md h-full flex flex-col",
-        isDark 
-          ? "border-white/10 bg-zinc-900/55 backdrop-blur-xl hover:border-white/25 hover:bg-zinc-900/75 shadow-xl text-white" 
-          : "bg-white border-zinc-200 hover:border-zinc-300 text-black"
+        "border rounded-3xl p-8 md:p-10 transition-all duration-300 h-full flex flex-col",
+        "border-white/10 bg-surface hover:border-white/20 hover:bg-surface/80 shadow-xl text-body"
       )}>
         <span className={cn(
-          "text-xs font-semibold tracking-wider uppercase px-2.5 py-1 rounded-full border mb-4 inline-block w-fit",
-          isDark
-            ? "bg-white/10 text-zinc-200 border-white/15"
-            : "bg-accent/10 text-accent border-accent/20"
+          "text-xs font-semibold tracking-wider uppercase px-3 py-1 rounded-full border mb-4 inline-block w-fit backdrop-blur-md",
+          "bg-white/5 text-muted border-white/10"
         )}>
           {category}
         </span>
         <h3 className={cn(
           "text-2xl font-bold tracking-tight mb-4 transition-colors",
-          isDark ? "text-white group-hover:text-zinc-200" : "text-black"
+          "text-heading group-hover:text-accent leading-tight"
         )}>
           {title}
         </h3>
-        <p className={cn(
-          "text-base leading-relaxed mb-8 flex-grow",
-          isDark ? "text-zinc-300" : "text-zinc-600"
-        )}>
+        <p className="text-base leading-relaxed mb-8 flex-grow">
           {excerpt}
         </p>
         <span className={cn(
-          "inline-flex items-center font-semibold mt-auto transition-colors",
-          isDark ? "text-zinc-200 group-hover:text-white" : "text-accent group-hover:text-accent/80"
+          "inline-flex items-center font-semibold mt-auto transition-colors text-accent group-hover:text-accent/80"
         )}>
           Read Article
           <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />

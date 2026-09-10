@@ -31,31 +31,3 @@
     color: var(--color-heading);
   }
 }
-
-/* Decent, sophisticated gradient utilities */
-.gradient-heading {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-white via-zinc-100 to-zinc-400;
-}
-
-.gradient-accent {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-zinc-100 via-zinc-300 to-zinc-400;
-}
-
-.gradient-metallic {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-white via-zinc-200 to-zinc-400;
-}
-
-.gradient-card-surface {
-  @apply bg-zinc-900/50 backdrop-blur-xl border border-white/10 shadow-2xl;
-}
-
-.gradient-card-dark {
-  @apply bg-zinc-950/70 backdrop-blur-xl border border-white/10 shadow-2xl;
-}
-
-.gradient-pill {
-  @apply bg-white/10 border border-white/15 text-zinc-200 backdrop-blur-md;
-}
-
-
-
