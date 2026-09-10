@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      (function() {
+        // Defensive fix for environments where window.fetch is a getter-only property
+        try {
+          var _rawFetch = window.fetch;
+          if (_rawFetch) {
+            var _curFetch = _rawFetch.bind(window);
+            Object.defineProperty(window, 'fetch', {
+              get: function() {
+                return _curFetch;
+              },
+              set: function(fn) {
+                _curFetch = fn;
+              },
+              configurable: true,
+              enumerable: true
+            });
+            if (typeof globalThis !== 'undefined' && globalThis !== window) {
+              try {
+                Object.defineProperty(globalThis, 'fetch', {
+                  get: function() { return _curFetch; },
+                  set: function(fn) { _curFetch = fn; },
+                  configurable: true,
+                  enumerable: true
+                });
+              } catch (_) {}
+            }
+          }
+        } catch (e) {
+          // Fallback if property is not configurable
+        }
+
+        // Global error suppressor for any rogue fetch getter assignments
+        window.addEventListener('error', function(event) {
+          if (event && event.message && event.message.includes('Cannot set property fetch')) {
+            event.preventDefault();
+            event.stopImmediatePropagation && event.stopImmediatePropagation();
+            return true;
+          }
+        });
+      })();
+    </script>
+    <title>ZYQITEK | Digital Solutions. Built to Grow.</title>
+    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+    <meta name="description" content="ZYQITEK is a premium digital agency that combines technology, creative execution, and digital growth." />
+    <meta property="og:title" content="ZYQITEK | Digital Solutions. Built to Grow." />
+    <meta property="og:description" content="ZYQITEK is a premium digital agency that combines technology, creative execution, and digital growth." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+

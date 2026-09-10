@@ -1,0 +1,8 @@
+{
+  "name": "ZYQITEK",
+  "description": "ZYQITEK is a modern digital agency offering custom software, creative branding, and marketing growth.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
