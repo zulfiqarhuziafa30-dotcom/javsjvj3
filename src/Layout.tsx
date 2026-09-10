@@ -1,33 +1,27 @@
-import { Outlet, useLocation } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
-import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
-import { useEffect } from 'react';
 
 export function Layout() {
-  const location = useLocation();
-  const shouldReduceMotion = useReducedMotion();
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [location.pathname]);
-
   return (
-    <div className="flex flex-col min-h-screen relative selection:bg-accent selection:text-white">
+    <div className="flex flex-col min-h-screen text-white relative selection:bg-white selection:text-black">
+      {/* Clean dark luxury studio backdrop matching reference image */}
+      <div 
+        className="fixed inset-0 pointer-events-none z-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: `
+            radial-gradient(ellipse 80% 55% at 50% 10%, rgba(65, 72, 85, 0.5) 0%, rgba(22, 25, 30, 0.85) 60%, #090a0d 100%),
+            url('/studio-backdrop.jpg')
+          `,
+          backgroundColor: "#090a0d"
+        }}
+      />
+
       <div className="relative z-10 flex flex-col min-h-screen">
         <Navbar />
-        <AnimatePresence mode="wait">
-          <motion.main 
-            key={location.pathname}
-            initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 20 }}
-            animate={shouldReduceMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
-            exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: -20 }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
-            className="flex-grow flex flex-col"
-          >
-            <Outlet />
-          </motion.main>
-        </AnimatePresence>
+        <main className="flex-grow">
+          <Outlet />
+        </main>
         <Footer />
       </div>
     </div>
