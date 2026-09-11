@@ -2,8 +2,10 @@ import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { CTASection } from '../components/ui/CTASection';
+import { useDocumentTitle } from '../hooks/useDocumentTitle';
 
 export function Blog() {
+  useDocumentTitle('Insights');
   const articles = [
     {
       category: "Digital Strategy",
@@ -61,7 +63,7 @@ export function Blog() {
       <section className="py-12 px-6">
         <div className="container mx-auto max-w-7xl">
           <Link to="#" className="group block">
-            <div className="bg-zinc-900/60 backdrop-blur-xl border border-white/12 rounded-3xl grid grid-cols-1 lg:grid-cols-2 overflow-hidden transition-all duration-300 hover:border-white/25 shadow-2xl">
+            <div className="bg-zinc-900/60 backdrop-blur-xl border border-white/12 rounded-3xl grid grid-cols-1 lg:grid-cols-2 overflow-hidden transition-all duration-300 hover:border-white/25 shadow-2xl shadow-black/50">
               <div className="bg-gradient-to-b from-zinc-950 via-black to-zinc-950 p-12 lg:p-24 flex items-center justify-center relative overflow-hidden border-b lg:border-b-0 lg:border-r border-white/10">
                 <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white/10 via-transparent to-transparent opacity-70"></div>
                 <h2 className="text-4xl md:text-5xl font-display font-bold text-white relative z-10 text-center leading-tight">
@@ -95,7 +97,7 @@ export function Blog() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {articles.map((article, idx) => (
               <Link key={idx} to={article.link} className="group block">
-                <article className="border border-white/12 bg-zinc-900/60 backdrop-blur-xl rounded-3xl p-8 md:p-10 transition-all duration-300 hover:border-white/25 hover:bg-zinc-900/75 shadow-xl h-full flex flex-col text-white">
+                <article className="border border-white/12 bg-zinc-900/60 backdrop-blur-xl rounded-3xl p-8 md:p-10 transition-all duration-300 hover:border-white/25 hover:bg-zinc-900/75 shadow-xl shadow-black/40 h-full flex flex-col text-white">
                   <span className="text-xs font-semibold tracking-wider uppercase px-3 py-1 rounded-full bg-white/10 text-zinc-200 border border-white/15 mb-4 inline-block w-fit backdrop-blur-md">
                     {article.category}
                   </span>
@@ -120,7 +122,7 @@ export function Blog() {
         heading="Let's build something great."
         subheading="Bring us your challenges. We'll bring the solutions."
         primaryCtaText="Contact Us"
-        primaryCtaLink="#contact"
+        primaryCtaLink="mailto:zyqitek@gmail.com?subject=Inquiry%20from%20Website"
       />
     </div>
   );

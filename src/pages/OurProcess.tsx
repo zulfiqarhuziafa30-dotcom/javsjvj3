@@ -1,7 +1,9 @@
 import { motion } from 'motion/react';
 import { CTASection } from '../components/ui/CTASection';
+import { useDocumentTitle } from '../hooks/useDocumentTitle';
 
 export function OurProcess() {
+  useDocumentTitle('Our Process');
   const steps = [
     {
       num: "01",
@@ -63,10 +65,10 @@ export function OurProcess() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className={`relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active`}
               >
-                <div className="flex items-center justify-center w-12 h-12 rounded-full border-4 border-zinc-950 bg-white text-zinc-950 shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow-xl font-black text-sm z-10 ml-0 md:ml-auto">
+                <div className="flex items-center justify-center w-12 h-12 rounded-full border-4 border-zinc-950 bg-white text-zinc-950 shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow-lg shadow-black/60 font-black text-sm z-10 ml-0 md:ml-auto">
                   {step.num}
                 </div>
-                <div className="w-[calc(100%-4rem)] md:w-[calc(50%-3rem)] bg-zinc-900/60 backdrop-blur-xl rounded-3xl p-8 border border-white/12 shadow-2xl ml-6 md:ml-0 hover:border-white/25 hover:bg-zinc-900/75 transition-all duration-300 text-white">
+                <div className="w-[calc(100%-4rem)] md:w-[calc(50%-3rem)] bg-zinc-900/60 backdrop-blur-xl rounded-3xl p-8 border border-white/12 shadow-2xl shadow-black/50 ml-6 md:ml-0 hover:border-white/25 hover:bg-zinc-900/75 transition-all duration-300 text-white">
                   <h3 className="font-bold text-2xl tracking-tight text-white mb-3">{step.title}</h3>
                   <p className="text-zinc-300 text-base leading-relaxed">{step.desc}</p>
                 </div>
@@ -93,7 +95,7 @@ export function OurProcess() {
         heading="Ready to start the process?"
         subheading="Let's discuss your next project and how we can bring it to life."
         primaryCtaText="Get in Touch"
-        primaryCtaLink="#contact"
+        primaryCtaLink="https://docs.google.com/forms/d/e/1FAIpQLSe-L3qZRRmCyVGZgy6tZZ080dP-8mSh2X6AWNrAloHcNAD6Nw/viewform?usp=header"
       />
     </div>
   );

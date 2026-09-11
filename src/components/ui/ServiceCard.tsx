@@ -20,7 +20,7 @@ export function ServiceCard({ num, title, description, ctaText, link, theme = 'd
       className={cn(
         "rounded-3xl p-8 flex flex-col justify-between group transition-all duration-300 h-full",
         isDark 
-          ? "bg-zinc-900/55 backdrop-blur-xl text-white border border-white/10 hover:border-white/25 hover:bg-zinc-900/75 shadow-xl" 
+          ? "bg-zinc-900/55 backdrop-blur-xl text-white border border-white/10 hover:border-white/25 hover:bg-zinc-900/75 shadow-xl shadow-black/40" 
           : "bg-white/90 border border-zinc-200 hover:border-zinc-300 shadow-md",
         className
       )}

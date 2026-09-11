@@ -1,7 +1,10 @@
 import { motion } from 'motion/react';
 import { CTASection } from '../components/ui/CTASection';
+import { useDocumentTitle } from '../hooks/useDocumentTitle';
 
 export function Services() {
+  useDocumentTitle('Capabilities');
+  
   return (
     <div className="flex flex-col w-full text-white">
       {/* HERO */}
@@ -34,7 +37,7 @@ export function Services() {
               </p>
             </div>
             
-            <div className="lg:col-span-7 bg-zinc-900/60 backdrop-blur-xl p-8 md:p-12 border border-white/12 rounded-3xl shadow-2xl text-white">
+            <div className="lg:col-span-7 bg-zinc-900/60 backdrop-blur-xl p-8 md:p-12 border border-white/12 rounded-3xl shadow-2xl shadow-black/50 text-white">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
                 {[
                   { title: "Custom Software", desc: "Tailored software solutions designed for your specific business logic and workflows." },
@@ -66,7 +69,7 @@ export function Services() {
               </p>
             </div>
             
-            <div className="lg:col-span-7 bg-zinc-900/60 backdrop-blur-xl text-white p-8 md:p-12 border border-white/12 rounded-3xl shadow-2xl">
+            <div className="lg:col-span-7 bg-zinc-900/60 backdrop-blur-xl text-white p-8 md:p-12 border border-white/12 rounded-3xl shadow-2xl shadow-black/50">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
                 {[
                   { title: "Brand Identity", desc: "Defining your core identity, voice, and positioning to stand out in the market." },
@@ -97,7 +100,7 @@ export function Services() {
               </p>
             </div>
             
-            <div className="lg:col-span-7 bg-zinc-900/60 backdrop-blur-xl p-8 md:p-12 border border-white/12 rounded-3xl shadow-2xl text-white">
+            <div className="lg:col-span-7 bg-zinc-900/60 backdrop-blur-xl p-8 md:p-12 border border-white/12 rounded-3xl shadow-2xl shadow-black/50 text-white">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
                 {[
                   { title: "SEO", desc: "Data-driven search engine optimization to improve organic visibility and drive high-intent traffic." },
@@ -122,7 +125,7 @@ export function Services() {
         heading="Have a project in mind?"
         subheading="Tell us what you're working on. We'll bring the strategy, technology, and creative execution to help move it forward."
         primaryCtaText="Let's Talk"
-        primaryCtaLink="#contact"
+        primaryCtaLink="https://docs.google.com/forms/d/e/1FAIpQLSe-L3qZRRmCyVGZgy6tZZ080dP-8mSh2X6AWNrAloHcNAD6Nw/viewform?usp=header"
       />
     </div>
   );

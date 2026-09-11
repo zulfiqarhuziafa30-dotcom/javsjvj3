@@ -71,7 +71,7 @@ export function Navbar() {
       </div>
 
       <div className="hidden md:block">
-        <Button href="/#contact" variant="primary" className="px-6 py-2 rounded-full text-sm">Let's Work Together</Button>
+        <Button href="https://docs.google.com/forms/d/e/1FAIpQLSe-L3qZRRmCyVGZgy6tZZ080dP-8mSh2X6AWNrAloHcNAD6Nw/viewform?usp=header" target="_blank" rel="noopener noreferrer" variant="primary" className="px-6 py-2 rounded-full text-sm">Let's Work Together</Button>
       </div>
 
       {/* Mobile Menu Toggle */}
@@ -113,7 +113,7 @@ export function Navbar() {
               })}
             </nav>
             <div className="mt-auto">
-              <Button href="/#contact" variant="primary" className="w-full">Let's Work Together</Button>
+              <Button href="https://docs.google.com/forms/d/e/1FAIpQLSe-L3qZRRmCyVGZgy6tZZ080dP-8mSh2X6AWNrAloHcNAD6Nw/viewform?usp=header" target="_blank" rel="noopener noreferrer" variant="primary" className="w-full">Let's Work Together</Button>
             </div>
           </motion.div>
         )}

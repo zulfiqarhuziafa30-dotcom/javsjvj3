@@ -1,8 +1,10 @@
 import { motion } from 'motion/react';
 import { CTASection } from '../components/ui/CTASection';
 import { Button } from '../components/ui/Button';
+import { useDocumentTitle } from '../hooks/useDocumentTitle';
 
 export function Careers() {
+  useDocumentTitle('Careers');
   const benefits = [
     {
       title: "Real client projects",
@@ -60,7 +62,7 @@ export function Careers() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {benefits.map((benefit, idx) => (
-              <div key={idx} className="bg-zinc-900/60 backdrop-blur-xl rounded-3xl p-8 md:p-10 border border-white/12 hover:border-white/25 hover:bg-zinc-900/75 transition-all duration-300 text-white shadow-xl">
+              <div key={idx} className="bg-zinc-900/60 backdrop-blur-xl rounded-3xl p-8 md:p-10 border border-white/12 hover:border-white/25 hover:bg-zinc-900/75 transition-all duration-300 text-white shadow-xl shadow-black/40">
                 <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-6 font-bold bg-white/10 border border-white/15 text-white backdrop-blur-md">
                   {idx + 1}
                 </div>
@@ -74,18 +76,53 @@ export function Careers() {
 
       {/* APPLICATION SECTION */}
       <section className="py-24 md:py-32 px-6 border-t border-white/10 text-white">
-        <div className="container mx-auto max-w-4xl text-center">
+        <div className="container mx-auto max-w-5xl text-center">
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-white">Think you'd be a good fit?</h2>
-          <p className="text-xl text-zinc-300 mb-12 max-w-2xl mx-auto">
-            Tell us what you can bring to ZYQITEK. We are always looking for talented developers, designers, and marketers.
+          <p className="text-xl text-zinc-300 mb-16 max-w-2xl mx-auto">
+            Choose your area of expertise below and apply to join our growing team.
           </p>
           
-          <div className="bg-zinc-900/70 backdrop-blur-xl border border-white/15 rounded-3xl p-8 md:p-12 text-left shadow-2xl">
-            <h3 className="text-2xl font-bold mb-4 text-white">General Application</h3>
-            <p className="text-zinc-300 mb-8 leading-relaxed">
-              Send us your portfolio, GitHub, or resume along with a brief introduction about yourself and how you can contribute to our team.
-            </p>
-            <Button href="mailto:careers@zyqitek.com" variant="primary" className="w-full sm:w-auto text-lg px-8 py-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            {/* Category 1 */}
+            <div className="bg-zinc-900/70 backdrop-blur-xl border border-white/15 rounded-3xl p-8 text-left shadow-lg hover:border-[#9C8A78]/40 transition-colors flex flex-col h-full">
+              <h3 className="text-xl font-bold mb-3 text-white">Development & Technology</h3>
+              <p className="text-zinc-300 text-sm leading-relaxed mb-8 flex-grow">
+                Software engineering, full-stack web, mobile development, cloud architecture, and automation roles.
+              </p>
+              <Button href="https://docs.google.com/forms/d/e/1FAIpQLSdUKOZHBw_iQlRlc4PHDRZnxl2_4ggMj33waLeBbH0n_MwH2A/viewform?usp=header" target="_blank" rel="noopener noreferrer" variant="outline" className="w-full justify-center">
+                Apply Now
+              </Button>
+            </div>
+
+            {/* Category 2 */}
+            <div className="bg-zinc-900/70 backdrop-blur-xl border border-white/15 rounded-3xl p-8 text-left shadow-lg hover:border-[#9C8A78]/40 transition-colors flex flex-col h-full">
+              <h3 className="text-xl font-bold mb-3 text-white">Creative & Branding</h3>
+              <p className="text-zinc-300 text-sm leading-relaxed mb-8 flex-grow">
+                Brand identity, UI/UX design, motion graphics, and visual direction roles.
+              </p>
+              <Button href="https://docs.google.com/forms/d/e/1FAIpQLSdUKOZHBw_iQlRlc4PHDRZnxl2_4ggMj33waLeBbH0n_MwH2A/viewform?usp=header" target="_blank" rel="noopener noreferrer" variant="outline" className="w-full justify-center">
+                Apply Now
+              </Button>
+            </div>
+
+            {/* Category 3 */}
+            <div className="bg-zinc-900/70 backdrop-blur-xl border border-white/15 rounded-3xl p-8 text-left shadow-lg hover:border-[#9C8A78]/40 transition-colors flex flex-col h-full">
+              <h3 className="text-xl font-bold mb-3 text-white">Marketing & Growth</h3>
+              <p className="text-zinc-300 text-sm leading-relaxed mb-8 flex-grow">
+                SEO, performance marketing, growth strategy, and sales roles.
+              </p>
+              <Button href="https://docs.google.com/forms/d/e/1FAIpQLSdUKOZHBw_iQlRlc4PHDRZnxl2_4ggMj33waLeBbH0n_MwH2A/viewform?usp=header" target="_blank" rel="noopener noreferrer" variant="outline" className="w-full justify-center">
+                Apply Now
+              </Button>
+            </div>
+          </div>
+
+          <div className="bg-zinc-900/40 backdrop-blur-md border border-white/10 rounded-2xl p-6 md:p-8 max-w-2xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div className="text-left">
+              <h4 className="text-lg font-bold text-white mb-1">Have a custom inquiry?</h4>
+              <p className="text-sm text-zinc-400">Send us your portfolio directly via email.</p>
+            </div>
+            <Button href="mailto:team.zyqitek@gmail.com?subject=Application" variant="secondary" className="w-full sm:w-auto whitespace-nowrap">
               Apply via Email
             </Button>
           </div>

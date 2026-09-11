@@ -11,7 +11,7 @@ interface BlogCardProps {
 export function BlogCard({ category, title, excerpt, link }: BlogCardProps) {
   return (
     <Link to={link} className="group block h-full">
-      <article className="border border-white/10 bg-zinc-900/55 backdrop-blur-xl rounded-3xl p-8 md:p-10 transition-all duration-300 hover:border-white/25 hover:bg-zinc-900/75 shadow-xl h-full flex flex-col text-white">
+      <article className="border border-white/10 bg-zinc-900/55 backdrop-blur-xl rounded-3xl p-8 md:p-10 transition-all duration-300 hover:border-white/25 hover:bg-zinc-900/75 shadow-xl shadow-black/40 h-full flex flex-col text-white">
         <span className="text-xs font-semibold tracking-wider uppercase px-2.5 py-1 rounded-full bg-white/10 text-zinc-200 border border-white/15 mb-4 inline-block w-fit">
           {category}
         </span>

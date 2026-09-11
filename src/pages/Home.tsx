@@ -5,9 +5,12 @@ import { Button } from '../components/ui/Button';
 import { SectionHeading } from '../components/ui/SectionHeading';
 import { BlogCard } from '../components/ui/BlogCard';
 import { CTASection } from '../components/ui/CTASection';
+import { ClientLogos } from '../components/ui/ClientLogos';
+import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { ArrowRight, Code2, Palette, TrendingUp, ShieldCheck, Zap, Layers } from 'lucide-react';
 
 export function Home() {
+  useDocumentTitle('Home');
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
   useEffect(() => {
@@ -30,7 +33,7 @@ export function Home() {
             className="flex flex-col items-center"
           >
             <span className="text-xs font-semibold tracking-widest text-zinc-300 uppercase bg-white/5 border border-white/10 px-4 py-1.5 rounded-full mb-8 backdrop-blur-md">
-              Digital Agency · Est. 2024
+              Digital,Done Better
             </span>
 
             <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold italic font-display tracking-tight text-zinc-100 mb-8 leading-[1.05]">
@@ -59,7 +62,7 @@ export function Home() {
             </p>
 
             <div className="flex flex-col sm:flex-row items-center gap-4">
-              <Button href="#contact" variant="primary" className="w-full sm:w-auto px-8 py-3.5">
+              <Button href="https://docs.google.com/forms/d/e/1FAIpQLSe-L3qZRRmCyVGZgy6tZZ080dP-8mSh2X6AWNrAloHcNAD6Nw/viewform?usp=header" target="_blank" rel="noopener noreferrer" variant="primary" className="w-full sm:w-auto px-8 py-3.5">
                 Start a Project
               </Button>
               <Button href="/services" variant="outline" className="w-full sm:w-auto px-8 py-3.5">
@@ -69,26 +72,28 @@ export function Home() {
 
             {/* Quiet trust highlights */}
             <div className="mt-16 pt-10 border-t border-white/10 w-full grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-              <div>
-                <div className="text-2xl md:text-3xl font-bold text-white">95%</div>
+              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
+                <div className="text-2xl md:text-3xl font-bold text-white">150+</div>
+                <div className="text-xs text-zinc-400 mt-1 uppercase tracking-wider">Projects Completed</div>
+              </motion.div>
+              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}>
+                <div className="text-2xl md:text-3xl font-bold text-white">10+</div>
+                <div className="text-xs text-zinc-400 mt-1 uppercase tracking-wider">Years Experience</div>
+              </motion.div>
+              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }}>
+                <div className="text-2xl md:text-3xl font-bold text-white">40+</div>
+                <div className="text-xs text-zinc-400 mt-1 uppercase tracking-wider">Global Clients</div>
+              </motion.div>
+              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.7 }}>
+                <div className="text-2xl md:text-3xl font-bold text-white">99%</div>
                 <div className="text-xs text-zinc-400 mt-1 uppercase tracking-wider">Client Retention</div>
-              </div>
-              <div>
-                <div className="text-2xl md:text-3xl font-bold text-white">Full-Stack</div>
-                <div className="text-xs text-zinc-400 mt-1 uppercase tracking-wider">Tech Execution</div>
-              </div>
-              <div>
-                <div className="text-2xl md:text-3xl font-bold text-white">Design</div>
-                <div className="text-xs text-zinc-400 mt-1 uppercase tracking-wider">Brand Systems</div>
-              </div>
-              <div>
-                <div className="text-2xl md:text-3xl font-bold text-white">Growth</div>
-                <div className="text-xs text-zinc-400 mt-1 uppercase tracking-wider">Scale & Analytics</div>
-              </div>
+              </motion.div>
             </div>
           </motion.div>
         </div>
       </section>
+
+      <ClientLogos />
 
       {/* CORE SERVICES - Simple 3-Card Grid */}
       <section className="py-20 md:py-28 px-6 border-t border-white/10">
@@ -265,7 +270,7 @@ export function Home() {
         heading="Ready to build what's next?"
         subheading="Tell us about your project. We'll bring the strategy, technology, and execution to move it forward."
         primaryCtaText="Start a Project"
-        primaryCtaLink="#contact"
+        primaryCtaLink="https://docs.google.com/forms/d/e/1FAIpQLSe-L3qZRRmCyVGZgy6tZZ080dP-8mSh2X6AWNrAloHcNAD6Nw/viewform?usp=header"
         secondaryCtaText="Our Services"
         secondaryCtaLink="/services"
       />
