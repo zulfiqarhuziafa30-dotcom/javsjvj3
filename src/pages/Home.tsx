@@ -5,12 +5,13 @@ import { Button } from '../components/ui/Button';
 import { SectionHeading } from '../components/ui/SectionHeading';
 import { BlogCard } from '../components/ui/BlogCard';
 import { CTASection } from '../components/ui/CTASection';
-import { ClientLogos } from '../components/ui/ClientLogos';
+import { ProcessRoadmap } from '../components/ui/ProcessRoadmap';
+import { LINKS } from "../config/constants";
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { ArrowRight, Code2, Palette, TrendingUp, ShieldCheck, Zap, Layers } from 'lucide-react';
 
 export function Home() {
-  useDocumentTitle('Home');
+  useDocumentTitle('Home', 'ZYQITEK is a digital agency focused on engineering, design, and growth.');
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
   useEffect(() => {
@@ -23,17 +24,12 @@ export function Home() {
 
   return (
     <div className="flex flex-col w-full text-white">
-      {/* HERO - Clean, spacious, and impactful */}
+      {/* HERO */}
       <section className="pt-24 pb-20 md:pt-36 md:pb-28 px-6 text-center">
         <div className="container mx-auto max-w-4xl">
-          <motion.div 
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="flex flex-col items-center"
-          >
+          <div className="flex flex-col items-center">
             <span className="text-xs font-semibold tracking-widest text-zinc-300 uppercase bg-white/5 border border-white/10 px-4 py-1.5 rounded-full mb-8 backdrop-blur-md">
-              Digital,Done Better
+              Digital, Done Better
             </span>
 
             <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold italic font-display tracking-tight text-zinc-100 mb-8 leading-[1.05]">
@@ -58,11 +54,11 @@ export function Home() {
             </h1>
 
             <p className="text-lg md:text-xl text-zinc-300 max-w-2xl mx-auto leading-relaxed mb-10">
-              ZYQITEK helps ambitious businesses build, improve, and scale through custom technology, creative design, and digital growth.
+              We build custom software, design distinctive brands, and drive digital growth.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center gap-4">
-              <Button href="https://docs.google.com/forms/d/e/1FAIpQLSe-L3qZRRmCyVGZgy6tZZ080dP-8mSh2X6AWNrAloHcNAD6Nw/viewform?usp=header" target="_blank" rel="noopener noreferrer" variant="primary" className="w-full sm:w-auto px-8 py-3.5">
+              <Button href={LINKS.forms.generalContact} target="_blank" rel="noopener noreferrer" variant="primary" className="w-full sm:w-auto px-8 py-3.5">
                 Start a Project
               </Button>
               <Button href="/services" variant="outline" className="w-full sm:w-auto px-8 py-3.5">
@@ -71,89 +67,104 @@ export function Home() {
             </div>
 
             {/* Quiet trust highlights */}
-            <div className="mt-16 pt-10 border-t border-white/10 w-full grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
-                <div className="text-2xl md:text-3xl font-bold text-white">150+</div>
-                <div className="text-xs text-zinc-400 mt-1 uppercase tracking-wider">Projects Completed</div>
-              </motion.div>
-              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}>
-                <div className="text-2xl md:text-3xl font-bold text-white">10+</div>
-                <div className="text-xs text-zinc-400 mt-1 uppercase tracking-wider">Years Experience</div>
-              </motion.div>
-              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }}>
-                <div className="text-2xl md:text-3xl font-bold text-white">40+</div>
-                <div className="text-xs text-zinc-400 mt-1 uppercase tracking-wider">Global Clients</div>
-              </motion.div>
-              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.7 }}>
-                <div className="text-2xl md:text-3xl font-bold text-white">99%</div>
-                <div className="text-xs text-zinc-400 mt-1 uppercase tracking-wider">Client Retention</div>
-              </motion.div>
+            <div className="mt-16 pt-10 border-t border-white/10 w-full grid grid-cols-1 md:grid-cols-3 gap-6 text-center max-w-3xl mx-auto">
+              <div>
+                <div className="text-sm font-bold text-white uppercase tracking-wider mb-1">Senior-Level Care</div>
+                <div className="text-xs text-zinc-400">Direct partner access on every engagement.</div>
+              </div>
+              <div>
+                <div className="text-sm font-bold text-white uppercase tracking-wider mb-1">Focused Portfolio</div>
+                <div className="text-xs text-zinc-400">Select client roster to guarantee execution.</div>
+              </div>
+              <div>
+                <div className="text-sm font-bold text-white uppercase tracking-wider mb-1">Clear Roadmaps</div>
+                <div className="text-xs text-zinc-400">Transparent milestones with weekly updates.</div>
+              </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
-      <ClientLogos />
-
-      {/* CORE SERVICES - Simple 3-Card Grid */}
+      {/* CORE CAPABILITIES - 3-Card Grid with Scannable Tags */}
       <section className="py-20 md:py-28 px-6 border-t border-white/10">
         <div className="container mx-auto max-w-7xl">
           <SectionHeading 
             heading="Core capabilities."
-            subheading="Everything required to build, launch, and scale modern digital products under one roof."
+            subheading="Three disciplines. One integrated partner."
           />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Capability 01 */}
-            <div className="bg-zinc-900/40 backdrop-blur-md border border-white/10 rounded-3xl p-8 flex flex-col justify-between hover:border-[#9C8A78]/30 transition-all duration-300">
+            <div className="bg-zinc-900/40 backdrop-blur-md border border-white/10 rounded-3xl p-8 flex flex-col justify-between hover:border-[#9C8A78]/40 transition-all duration-300 shadow-xl shadow-black/40">
               <div>
                 <div className="w-12 h-12 bg-[#9C8A78]/10 border border-[#9C8A78]/20 rounded-2xl flex items-center justify-center mb-6 text-[#B0A08D]">
                   <Code2 className="w-6 h-6" />
                 </div>
                 <span className="text-xs font-mono uppercase tracking-widest text-[#B0A08D]">01 / Tech</span>
-                <h3 className="text-2xl font-bold text-white mt-2 mb-3">Development & Technology</h3>
+                <h3 className="text-2xl font-bold text-white mt-2 mb-2">Development</h3>
                 <p className="text-sm text-zinc-300 leading-relaxed mb-6">
-                  Custom software, web and mobile apps, scalable cloud architectures, and intelligent AI automation tailored to your workflows.
+                  Custom software, web apps, cloud systems, and intelligent automation.
                 </p>
+                <div className="flex flex-wrap gap-1.5 mb-8">
+                  {['Web Apps', 'Mobile', 'Cloud', 'AI Workflows'].map((tag) => (
+                    <span key={tag} className="text-[11px] font-medium px-2.5 py-1 rounded-md bg-white/5 text-zinc-300 border border-white/10">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
               <a href="/services#development" className="text-sm font-semibold text-[#B0A08D] hover:text-[#C5B7A6] flex items-center gap-2 group transition-colors">
-                <span>View Details</span>
+                <span>View Tech Details</span>
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </a>
             </div>
 
             {/* Capability 02 */}
-            <div className="bg-zinc-900/40 backdrop-blur-md border border-white/10 rounded-3xl p-8 flex flex-col justify-between hover:border-[#9C8A78]/30 transition-all duration-300">
+            <div className="bg-zinc-900/40 backdrop-blur-md border border-white/10 rounded-3xl p-8 flex flex-col justify-between hover:border-[#9C8A78]/40 transition-all duration-300 shadow-xl shadow-black/40">
               <div>
                 <div className="w-12 h-12 bg-[#9C8A78]/10 border border-[#9C8A78]/20 rounded-2xl flex items-center justify-center mb-6 text-[#B0A08D]">
                   <Palette className="w-6 h-6" />
                 </div>
                 <span className="text-xs font-mono uppercase tracking-widest text-[#B0A08D]">02 / Design</span>
-                <h3 className="text-2xl font-bold text-white mt-2 mb-3">Creative & Branding</h3>
+                <h3 className="text-2xl font-bold text-white mt-2 mb-2">Creative & Brand</h3>
                 <p className="text-sm text-zinc-300 leading-relaxed mb-6">
-                  Brand identity, UI/UX interface systems, motion design, and visual direction designed to stand out in crowded markets.
+                  Brand identities, UI/UX systems, and high-converting digital interfaces.
                 </p>
+                <div className="flex flex-wrap gap-1.5 mb-8">
+                  {['Brand Identity', 'UI/UX Design', 'Design Systems', 'Motion'].map((tag) => (
+                    <span key={tag} className="text-[11px] font-medium px-2.5 py-1 rounded-md bg-white/5 text-zinc-300 border border-white/10">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
               <a href="/services#creative" className="text-sm font-semibold text-[#B0A08D] hover:text-[#C5B7A6] flex items-center gap-2 group transition-colors">
-                <span>View Details</span>
+                <span>View Creative Details</span>
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </a>
             </div>
 
             {/* Capability 03 */}
-            <div className="bg-zinc-900/40 backdrop-blur-md border border-white/10 rounded-3xl p-8 flex flex-col justify-between hover:border-[#9C8A78]/30 transition-all duration-300">
+            <div className="bg-zinc-900/40 backdrop-blur-md border border-white/10 rounded-3xl p-8 flex flex-col justify-between hover:border-[#9C8A78]/40 transition-all duration-300 shadow-xl shadow-black/40">
               <div>
                 <div className="w-12 h-12 bg-[#9C8A78]/10 border border-[#9C8A78]/20 rounded-2xl flex items-center justify-center mb-6 text-[#B0A08D]">
                   <TrendingUp className="w-6 h-6" />
                 </div>
                 <span className="text-xs font-mono uppercase tracking-widest text-[#B0A08D]">03 / Growth</span>
-                <h3 className="text-2xl font-bold text-white mt-2 mb-3">Marketing & Growth</h3>
+                <h3 className="text-2xl font-bold text-white mt-2 mb-2">Marketing</h3>
                 <p className="text-sm text-zinc-300 leading-relaxed mb-6">
-                  SEO, conversion optimization, performance marketing, and analytics engineered to acquire and retain real customers.
+                  Targeted SEO, paid acquisition, conversion audits, and ROI analytics.
                 </p>
+                <div className="flex flex-wrap gap-1.5 mb-8">
+                  {['Search SEO', 'Performance Ads', 'CRO Audits', 'Analytics'].map((tag) => (
+                    <span key={tag} className="text-[11px] font-medium px-2.5 py-1 rounded-md bg-white/5 text-zinc-300 border border-white/10">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
               <a href="/services#growth" className="text-sm font-semibold text-[#B0A08D] hover:text-[#C5B7A6] flex items-center gap-2 group transition-colors">
-                <span>View Details</span>
+                <span>View Growth Details</span>
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </a>
             </div>
@@ -161,76 +172,57 @@ export function Home() {
         </div>
       </section>
 
-      {/* WHY ZYQITEK - Clean Value Proposition */}
+      {/* WHY ZYQITEK - 3 Scannable Cards */}
       <section className="py-20 md:py-28 px-6 border-t border-white/10">
         <div className="container mx-auto max-w-7xl">
           <SectionHeading 
-            heading="Built for serious businesses."
-            subheading="Good digital work needs to function reliably, scale gracefully, and create sustainable business value."
+            heading="Why work with us."
+            subheading="Built for stability, velocity, and enduring business value."
           />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-zinc-900/30 border border-white/10 rounded-2xl p-8">
-              <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center mb-5 text-white">
+            <div className="bg-zinc-900/40 backdrop-blur-md border border-white/10 rounded-2xl p-8 hover:border-[#9C8A78]/30 transition-all">
+              <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-5 text-[#B0A08D]">
                 <Zap className="w-5 h-5" />
               </div>
               <h3 className="text-xl font-bold text-white mb-2">Built to Scale</h3>
-              <p className="text-sm text-zinc-300 leading-relaxed">
-                We engineer systems that meet your current requirements without boxing you in when demand expands.
+              <p className="text-xs text-zinc-300 leading-relaxed">
+                Architectures that handle surging traffic without costly rebuilds.
               </p>
             </div>
 
-            <div className="bg-zinc-900/30 border border-white/10 rounded-2xl p-8">
-              <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center mb-5 text-white">
+            <div className="bg-zinc-900/40 backdrop-blur-md border border-white/10 rounded-2xl p-8 hover:border-[#9C8A78]/30 transition-all">
+              <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-5 text-[#B0A08D]">
                 <Layers className="w-5 h-5" />
               </div>
-              <h3 className="text-xl font-bold text-white mb-2">One Connected Team</h3>
-              <p className="text-sm text-zinc-300 leading-relaxed">
-                Designers, engineers, and growth specialists operate as one unit rather than disconnected contractors.
+              <h3 className="text-xl font-bold text-white mb-2">One Unified Team</h3>
+              <p className="text-xs text-zinc-300 leading-relaxed">
+                Engineers, designers, and marketers aligned around your KPIs.
               </p>
             </div>
 
-            <div className="bg-zinc-900/30 border border-white/10 rounded-2xl p-8">
-              <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center mb-5 text-white">
+            <div className="bg-zinc-900/40 backdrop-blur-md border border-white/10 rounded-2xl p-8 hover:border-[#9C8A78]/30 transition-all">
+              <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-5 text-[#B0A08D]">
                 <ShieldCheck className="w-5 h-5" />
               </div>
-              <h3 className="text-xl font-bold text-white mb-2">Long-Term Thinking</h3>
-              <p className="text-sm text-zinc-300 leading-relaxed">
-                We prioritize sustainable technical architecture, clear communication, and enduring client partnerships.
+              <h3 className="text-xl font-bold text-white mb-2">Long-Term Quality</h3>
+              <p className="text-xs text-zinc-300 leading-relaxed">
+                Clean maintainable code, transparent milestones, and zero lock-in.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* PROCESS PREVIEW - Simple 4-step row */}
+      {/* PROCESS ROADMAP - Visual Animated Timeline */}
       <section className="py-20 md:py-28 px-6 border-t border-white/10">
         <div className="container mx-auto max-w-7xl">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
-            <SectionHeading 
-              heading="From idea to impact."
-              subheading="A direct, 4-phase process that keeps every project focused and transparent."
-              className="mb-0"
-            />
-            <Button href="/our-process" variant="outline" className="shrink-0">
-              Full Process
-            </Button>
-          </div>
+          <SectionHeading 
+            heading="How we work."
+            subheading="A four-phase framework from discovery to sustainable growth."
+          />
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { num: '01', title: 'Discover', desc: 'Understand the business goals, audience, and technical requirements.' },
-              { num: '02', title: 'Plan', desc: 'Define strategy, scope priorities, architecture, and the roadmap.' },
-              { num: '03', title: 'Build', desc: 'Design, develop, test, and polish with consistent milestone check-ins.' },
-              { num: '04', title: 'Grow', desc: 'Launch, monitor performance, and continuously optimize for outcomes.' },
-            ].map((step) => (
-              <div key={step.num} className="bg-zinc-900/30 border border-white/10 rounded-2xl p-6">
-                <span className="text-xs font-mono font-bold text-zinc-400 block mb-3">{step.num}</span>
-                <h3 className="text-xl font-bold text-white mb-2">{step.title}</h3>
-                <p className="text-zinc-300 text-sm leading-relaxed">{step.desc}</p>
-              </div>
-            ))}
-          </div>
+          <ProcessRoadmap />
         </div>
       </section>
 
@@ -238,42 +230,43 @@ export function Home() {
       <section className="py-20 md:py-28 px-6 border-t border-white/10">
         <div className="container mx-auto max-w-7xl">
           <SectionHeading 
-            heading="Ideas and insights."
-            subheading="Perspectives on technology, design strategy, and digital growth."
+            heading="Latest thinking."
+            subheading="Practical insights on engineering, design, and growth."
           />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <BlogCard 
               category="Agency"
-              title="About ZYQITEK: Building Digital Solutions That Last"
-              excerpt="Our story, foundational principles, and why 95% of our clients return for long-term partnerships."
+              title="About ZYQITEK: Digital Solutions That Last"
+              excerpt="Our philosophy on why 95% of clients return for ongoing partnerships."
               link="/blog"
             />
             <BlogCard 
-              category="Digital Strategy"
-              title="Why Your Digital Presence Needs More Than a Website"
-              excerpt="How engineering, branding, user experience, and growth marketing connect."
+              category="Strategy"
+              title="Why Your Digital Presence Needs More Than a Site"
+              excerpt="Connecting technology, branding, and conversion into one ecosystem."
               link="/blog"
             />
             <BlogCard 
               category="Technology"
-              title="Building for Growth: Why Scalable Digital Solutions Matter"
-              excerpt="Key architectural considerations when investing in technology built to last."
+              title="How Modern Technology Helps Businesses Scale"
+              excerpt="Architectural principles for investing in software that avoids rewrite debt."
               link="/blog"
             />
           </div>
         </div>
       </section>
 
-      {/* FINAL CTA - Clean & direct */}
+      {/* FINAL CTA */}
       <CTASection 
-        heading="Ready to build what's next?"
-        subheading="Tell us about your project. We'll bring the strategy, technology, and execution to move it forward."
+        heading="Let's build together."
+        subheading="Bring us your goals. We'll engineer the solution."
         primaryCtaText="Start a Project"
-        primaryCtaLink="https://docs.google.com/forms/d/e/1FAIpQLSe-L3qZRRmCyVGZgy6tZZ080dP-8mSh2X6AWNrAloHcNAD6Nw/viewform?usp=header"
-        secondaryCtaText="Our Services"
+        primaryCtaLink={LINKS.forms.generalContact}
+        secondaryCtaText="Our Capabilities"
         secondaryCtaLink="/services"
       />
     </div>
   );
 }
+

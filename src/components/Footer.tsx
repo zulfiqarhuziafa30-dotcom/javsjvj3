@@ -1,6 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 import { ZyqitekLogo } from './ZyqitekLogo';
 import { Twitter, Linkedin, Instagram, Github, Mail, Phone, MapPin } from 'lucide-react';
+import { CONTACT, LINKS } from '../config/constants';
 
 export function Footer() {
   const location = useLocation();
@@ -35,28 +36,28 @@ export function Footer() {
             <h4 className="text-white font-semibold text-sm uppercase tracking-widest mb-2">Contact</h4>
             {!isCareers ? (
               <>
-                <a href="mailto:zyqitek@gmail.com?subject=Inquiry%20from%20Website" className="text-sm hover:text-white transition-colors w-fit flex items-center gap-2">
+                <a href={`mailto:${CONTACT.general.email}?subject=Inquiry%20from%20Website`} className="text-sm hover:text-white transition-colors w-fit flex items-center gap-2">
                   <Mail className="w-4 h-4" />
-                  zyqitek@gmail.com
+                  {CONTACT.general.email}
                 </a>
-                <a href="tel:+3442897220" className="text-sm hover:text-white transition-colors w-fit flex items-center gap-2">
+                <a href={`tel:${CONTACT.general.phone}`} className="text-sm hover:text-white transition-colors w-fit flex items-center gap-2">
                   <Phone className="w-4 h-4" />
-                  +3442897220
+                  {CONTACT.general.phone}
                 </a>
                 <span className="text-sm flex items-center gap-2">
                   <MapPin className="w-4 h-4" />
-                  Karachi, Pakistan
+                  {CONTACT.general.location}
                 </span>
               </>
             ) : (
               <>
-                <a href="mailto:team.zyqitek@gmail.com?subject=Application" className="text-sm hover:text-white transition-colors w-fit flex items-center gap-2">
+                <a href={`mailto:${CONTACT.careers.email}?subject=Application`} className="text-sm hover:text-white transition-colors w-fit flex items-center gap-2">
                   <Mail className="w-4 h-4" />
-                  team.zyqitek@gmail.com
+                  {CONTACT.careers.email}
                 </a>
-                <a href="tel:+923061079757" className="text-sm hover:text-white transition-colors w-fit flex items-center gap-2">
+                <a href={`tel:${CONTACT.careers.phone}`} className="text-sm hover:text-white transition-colors w-fit flex items-center gap-2">
                   <Phone className="w-4 h-4" />
-                  +923061079757
+                  {CONTACT.careers.phone}
                 </a>
               </>
             )}
@@ -66,10 +67,10 @@ export function Footer() {
           <div className="flex flex-col gap-4">
             <h4 className="text-white font-semibold text-sm uppercase tracking-widest mb-2">Social</h4>
             <div className="flex items-center gap-4">
-              <a href="#" aria-label="Twitter" className="text-zinc-400 hover:text-white transition-colors"><Twitter className="w-5 h-5" /></a>
-              <a href="#" aria-label="LinkedIn" className="text-zinc-400 hover:text-white transition-colors"><Linkedin className="w-5 h-5" /></a>
-              <a href="#" aria-label="Instagram" className="text-zinc-400 hover:text-white transition-colors"><Instagram className="w-5 h-5" /></a>
-              <a href="#" aria-label="Github" className="text-zinc-400 hover:text-white transition-colors"><Github className="w-5 h-5" /></a>
+              <a href={LINKS.socials.twitter} aria-label="Twitter" className="text-zinc-400 hover:text-white transition-colors"><Twitter className="w-5 h-5" /></a>
+              <a href={LINKS.socials.linkedin} aria-label="LinkedIn" className="text-zinc-400 hover:text-white transition-colors"><Linkedin className="w-5 h-5" /></a>
+              <a href={LINKS.socials.instagram} aria-label="Instagram" className="text-zinc-400 hover:text-white transition-colors"><Instagram className="w-5 h-5" /></a>
+              <a href={LINKS.socials.github} aria-label="Github" className="text-zinc-400 hover:text-white transition-colors"><Github className="w-5 h-5" /></a>
             </div>
           </div>
         </div>

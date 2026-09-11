@@ -6,6 +6,8 @@ import { cn } from './ui/utils';
 import { motion, AnimatePresence } from 'motion/react';
 import { ZyqitekLogo } from './ZyqitekLogo';
 
+import { LINKS } from '../config/constants';
+
 const navLinks = [
   { name: 'Home', path: '/' },
   { name: 'Services', path: '/services' },
@@ -57,13 +59,20 @@ export function Navbar() {
                 key={link.path} 
                 to={link.path}
                 className={cn(
-                  "px-4 py-2 rounded-full transition-all duration-200",
+                  "px-4 py-2 rounded-full transition-all duration-200 relative",
                   isActive 
-                    ? "text-[#B0A08D] font-semibold bg-[#9C8A78]/10 shadow-[0_0_15px_rgba(156,138,120,0.15)] border border-[#9C8A78]/30" 
+                    ? "text-[#B0A08D] font-semibold" 
                     : "text-zinc-400 hover:text-white hover:bg-white/5"
                 )}
               >
-                {link.name}
+                {isActive && (
+                  <motion.div
+                    layoutId="navbar-active"
+                    className="absolute inset-0 bg-[#9C8A78]/10 shadow-[0_0_15px_rgba(156,138,120,0.15)] border border-[#9C8A78]/30 rounded-full"
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                  />
+                )}
+                <span className="relative z-10">{link.name}</span>
               </Link>
             );
           })}
@@ -71,7 +80,7 @@ export function Navbar() {
       </div>
 
       <div className="hidden md:block">
-        <Button href="https://docs.google.com/forms/d/e/1FAIpQLSe-L3qZRRmCyVGZgy6tZZ080dP-8mSh2X6AWNrAloHcNAD6Nw/viewform?usp=header" target="_blank" rel="noopener noreferrer" variant="primary" className="px-6 py-2 rounded-full text-sm">Let's Work Together</Button>
+        <Button href={LINKS.forms.generalContact} target="_blank" rel="noopener noreferrer" variant="primary" className="px-6 py-2 rounded-full text-sm">Let's Work Together</Button>
       </div>
 
       {/* Mobile Menu Toggle */}
@@ -100,6 +109,7 @@ export function Navbar() {
                   <Link 
                     key={link.path} 
                     to={link.path}
+                    onClick={() => setIsMobileMenuOpen(false)}
                     className={cn(
                       "py-2 transition-colors",
                       isActive 
@@ -113,7 +123,7 @@ export function Navbar() {
               })}
             </nav>
             <div className="mt-auto">
-              <Button href="https://docs.google.com/forms/d/e/1FAIpQLSe-L3qZRRmCyVGZgy6tZZ080dP-8mSh2X6AWNrAloHcNAD6Nw/viewform?usp=header" target="_blank" rel="noopener noreferrer" variant="primary" className="w-full">Let's Work Together</Button>
+              <Button href={LINKS.forms.generalContact} target="_blank" rel="noopener noreferrer" variant="primary" className="w-full">Let's Work Together</Button>
             </div>
           </motion.div>
         )}
