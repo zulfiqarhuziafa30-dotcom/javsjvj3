@@ -1,11 +1,12 @@
 import { Link, useLocation } from 'react-router-dom';
 import { ZyqitekLogo } from './ZyqitekLogo';
-import { Twitter, Linkedin, Instagram, Github, Mail, Phone, MapPin } from 'lucide-react';
+import { Instagram, Facebook, MessageCircle, Mail, Phone, MapPin } from 'lucide-react';
 import { CONTACT, LINKS } from '../config/constants';
 
 export function Footer() {
   const location = useLocation();
-  const isCareers = location.pathname === '/careers';
+  const isCareers = location.pathname.startsWith('/careers');
+  const isContact = location.pathname.startsWith('/contact');
 
   return (
     <footer className="bg-zinc-950 border-t border-white/10 text-zinc-400 pt-16 pb-8 px-6 md:px-10 mt-auto">
@@ -25,10 +26,12 @@ export function Footer() {
           {/* Links */}
           <div className="flex flex-col gap-4">
             <h4 className="text-white font-semibold text-sm uppercase tracking-widest mb-2">Explore</h4>
+            <Link to="/about" className="text-sm hover:text-white transition-colors w-fit">About</Link>
             <Link to="/services" className="text-sm hover:text-white transition-colors w-fit">Services</Link>
             <Link to="/our-process" className="text-sm hover:text-white transition-colors w-fit">Our Process</Link>
             <Link to="/blog" className="text-sm hover:text-white transition-colors w-fit">Insights</Link>
             <Link to="/careers" className="text-sm hover:text-white transition-colors w-fit">Careers</Link>
+            <Link to="/contact" className="text-sm hover:text-white transition-colors w-fit">Contact</Link>
           </div>
 
           {/* Contact */}
@@ -40,10 +43,12 @@ export function Footer() {
                   <Mail className="w-4 h-4" />
                   {CONTACT.general.email}
                 </a>
-                <a href={`tel:${CONTACT.general.phone}`} className="text-sm hover:text-white transition-colors w-fit flex items-center gap-2">
-                  <Phone className="w-4 h-4" />
-                  {CONTACT.general.phone}
-                </a>
+                {!isContact && (
+                  <a href={`tel:${CONTACT.general.phone}`} className="text-sm hover:text-white transition-colors w-fit flex items-center gap-2">
+                    <Phone className="w-4 h-4" />
+                    {CONTACT.general.phone}
+                  </a>
+                )}
                 <span className="text-sm flex items-center gap-2">
                   <MapPin className="w-4 h-4" />
                   {CONTACT.general.location}
@@ -67,10 +72,33 @@ export function Footer() {
           <div className="flex flex-col gap-4">
             <h4 className="text-white font-semibold text-sm uppercase tracking-widest mb-2">Social</h4>
             <div className="flex items-center gap-4">
-              <a href={LINKS.socials.twitter} aria-label="Twitter" className="text-zinc-400 hover:text-white transition-colors"><Twitter className="w-5 h-5" /></a>
-              <a href={LINKS.socials.linkedin} aria-label="LinkedIn" className="text-zinc-400 hover:text-white transition-colors"><Linkedin className="w-5 h-5" /></a>
-              <a href={LINKS.socials.instagram} aria-label="Instagram" className="text-zinc-400 hover:text-white transition-colors"><Instagram className="w-5 h-5" /></a>
-              <a href={LINKS.socials.github} aria-label="Github" className="text-zinc-400 hover:text-white transition-colors"><Github className="w-5 h-5" /></a>
+              <a 
+                href={LINKS.socials.instagram} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                aria-label="Instagram" 
+                className="text-zinc-400 hover:text-white transition-colors"
+              >
+                <Instagram className="w-5 h-5" />
+              </a>
+              <a 
+                href={LINKS.socials.facebook} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                aria-label="Facebook" 
+                className="text-zinc-400 hover:text-white transition-colors"
+              >
+                <Facebook className="w-5 h-5" />
+              </a>
+              <a 
+                href={LINKS.socials.whatsapp} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                aria-label="WhatsApp" 
+                className="text-zinc-400 hover:text-white transition-colors"
+              >
+                <MessageCircle className="w-5 h-5" />
+              </a>
             </div>
           </div>
         </div>

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Instagram, Facebook, MessageCircle } from 'lucide-react';
 import { Button } from './ui/Button';
 import { cn } from './ui/utils';
 import { motion, AnimatePresence } from 'motion/react';
@@ -122,8 +122,37 @@ export function Navbar() {
                 );
               })}
             </nav>
-            <div className="mt-auto">
+            <div className="mt-auto pt-6 border-t border-white/10 flex flex-col gap-4">
               <Button href={LINKS.forms.generalContact} target="_blank" rel="noopener noreferrer" variant="primary" className="w-full">Let's Work Together</Button>
+              <div className="flex items-center justify-center gap-6 pt-2">
+                <a 
+                  href={LINKS.socials.instagram} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  aria-label="Instagram" 
+                  className="text-zinc-400 hover:text-white transition-colors"
+                >
+                  <Instagram className="w-5 h-5" />
+                </a>
+                <a 
+                  href={LINKS.socials.facebook} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  aria-label="Facebook" 
+                  className="text-zinc-400 hover:text-white transition-colors"
+                >
+                  <Facebook className="w-5 h-5" />
+                </a>
+                <a 
+                  href={LINKS.socials.whatsapp} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  aria-label="WhatsApp" 
+                  className="text-zinc-400 hover:text-white transition-colors"
+                >
+                  <MessageCircle className="w-5 h-5" />
+                </a>
+              </div>
             </div>
           </motion.div>
         )}

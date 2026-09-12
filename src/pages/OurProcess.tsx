@@ -1,7 +1,8 @@
 import { motion } from 'motion/react';
 import { CTASection } from '../components/ui/CTASection';
 import { LINKS } from "../config/constants";
-import { useDocumentTitle } from '../hooks/useDocumentTitle';
+import { SEO } from '../components/SEO';
+import { getBreadcrumbSchema } from '../utils/structuredData';
 import { 
   Compass, 
   FileText, 
@@ -14,8 +15,6 @@ import {
 } from 'lucide-react';
 
 export function OurProcess() {
-  useDocumentTitle('Our Process', 'A clear, five-step methodology for executing digital projects from discovery to growth.');
-
   const steps = [
     {
       num: "01",
@@ -56,6 +55,16 @@ export function OurProcess() {
 
   return (
     <div className="flex flex-col w-full text-white">
+      <SEO 
+        title="Our Process"
+        description="Discover ZYQITEK's agile five-stage delivery framework: Discover, Plan, Build, Launch, and Scale. Transparent milestones, clean architecture, and rapid execution."
+        keywords="Our Process, agile software development, web development methodology, project delivery framework, ZYQITEK process"
+        canonical="/our-process"
+        schema={getBreadcrumbSchema([
+          { name: 'Home', path: '/' },
+          { name: 'Our Process', path: '/our-process' }
+        ])}
+      />
       {/* HERO */}
       <section className="pt-24 pb-16 md:pt-32 md:pb-24 px-6 border-b border-white/10">
         <div className="container mx-auto max-w-4xl text-center">
@@ -76,6 +85,7 @@ export function OurProcess() {
       {/* TIMELINE */}
       <section className="py-20 md:py-28">
         <div className="container mx-auto px-6 max-w-4xl">
+          <h2 className="sr-only">Our Five-Step Methodology</h2>
           <div className="space-y-12 relative before:absolute before:inset-0 before:ml-6 md:before:ml-8 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-[#9C8A78] before:via-[#B0A08D]/40 before:to-zinc-800">
             {steps.map((step, index) => {
               const Icon = step.icon;

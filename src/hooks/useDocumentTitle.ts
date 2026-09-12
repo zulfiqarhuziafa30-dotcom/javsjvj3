@@ -1,35 +1,88 @@
 import { useEffect } from 'react';
 
-export function useDocumentTitle(title: string, description?: string) {
+export const SITE_BRAND_TITLE = 'ZYQITEK — IT Solutions in One Place';
+export const BRAND_SUFFIX = 'ZYQITEK | IT Solutions in One Place';
+
+export function formatPageTitle(title?: string): string {
+  if (!title) return SITE_BRAND_TITLE;
+  const trimmed = title.trim();
+  if (trimmed === SITE_BRAND_TITLE || trimmed === 'ZYQITEK' || trimmed.toLowerCase() === 'home') {
+    return SITE_BRAND_TITLE;
+  }
+  if (trimmed.endsWith(BRAND_SUFFIX)) {
+    return trimmed;
+  }
+  if (trimmed.includes('— ZYQITEK | IT Solutions in One Place')) {
+    return trimmed;
+  }
+  
+  const clean = trimmed
+    .replace(/\s*([|—–-])\s*ZYQITEK.*$/i, '')
+    .replace(/\s*([|—–-])\s*IT Solutions in One Place.*$/i, '')
+    .trim();
+
+  if (!clean || clean.toLowerCase() === 'home') {
+    return SITE_BRAND_TITLE;
+  }
+  
+  // Pattern: "[Page Name] — ZYQITEK | IT Solutions in One Place"
+  return `${clean} — ${BRAND_SUFFIX}`;
+}
+
+export function useDocumentTitle(
+  title: string, 
+  description?: string, 
+  canonicalUrl?: string, 
+  ogImage?: string,
+  keywords?: string,
+  noindex?: boolean
+) {
   useEffect(() => {
-    const defaultTitle = 'ZYQITEK';
-    const fullTitle = title ? `${title} | ${defaultTitle}` : defaultTitle;
+    const fullTitle = formatPageTitle(title);
     document.title = fullTitle;
 
+    // Helper to set or create a meta tag
+    const setMetaTag = (attrName: 'name' | 'property', attrValue: string, content: string) => {
+      let meta = document.querySelector(`meta[${attrName}="${attrValue}"]`);
+      if (!meta) {
+        meta = document.createElement('meta');
+        meta.setAttribute(attrName, attrValue);
+        document.head.appendChild(meta);
+      }
+      meta.setAttribute('content', content);
+    };
+
+    setMetaTag('name', 'title', fullTitle);
+    setMetaTag('property', 'og:title', fullTitle);
+    setMetaTag('name', 'twitter:title', fullTitle);
+
     if (description) {
-      let metaDescription = document.querySelector('meta[name="description"]');
-      if (!metaDescription) {
-        metaDescription = document.createElement('meta');
-        metaDescription.setAttribute('name', 'description');
-        document.head.appendChild(metaDescription);
-      }
-      metaDescription.setAttribute('content', description);
-      
-      let ogDescription = document.querySelector('meta[property="og:description"]');
-      if (!ogDescription) {
-        ogDescription = document.createElement('meta');
-        ogDescription.setAttribute('property', 'og:description');
-        document.head.appendChild(ogDescription);
-      }
-      ogDescription.setAttribute('content', description);
+      setMetaTag('name', 'description', description);
+      setMetaTag('property', 'og:description', description);
+      setMetaTag('name', 'twitter:description', description);
     }
-    
-    let ogTitle = document.querySelector('meta[property="og:title"]');
-    if (!ogTitle) {
-      ogTitle = document.createElement('meta');
-      ogTitle.setAttribute('property', 'og:title');
-      document.head.appendChild(ogTitle);
+
+    if (keywords) {
+      setMetaTag('name', 'keywords', keywords);
     }
-    ogTitle.setAttribute('content', fullTitle);
-  }, [title, description]);
+
+    setMetaTag('name', 'robots', noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1');
+
+    if (canonicalUrl) {
+      setMetaTag('property', 'og:url', canonicalUrl);
+      setMetaTag('name', 'twitter:url', canonicalUrl);
+      let canonicalLink = document.querySelector('link[rel="canonical"]');
+      if (!canonicalLink) {
+        canonicalLink = document.createElement('link');
+        canonicalLink.setAttribute('rel', 'canonical');
+        document.head.appendChild(canonicalLink);
+      }
+      canonicalLink.setAttribute('href', canonicalUrl);
+    }
+
+    if (ogImage) {
+      setMetaTag('property', 'og:image', ogImage);
+      setMetaTag('name', 'twitter:image', ogImage);
+    }
+  }, [title, description, canonicalUrl, ogImage, keywords, noindex]);
 }

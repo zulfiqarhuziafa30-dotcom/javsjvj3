@@ -1,7 +1,8 @@
 import { motion } from 'motion/react';
 import { CTASection } from '../components/ui/CTASection';
 import { LINKS } from "../config/constants";
-import { useDocumentTitle } from '../hooks/useDocumentTitle';
+import { SEO } from '../components/SEO';
+import { getBreadcrumbSchema } from '../utils/structuredData';
 import { 
   Code2, 
   Smartphone, 
@@ -16,10 +17,18 @@ import {
 } from 'lucide-react';
 
 export function Services() {
-  useDocumentTitle('Capabilities', 'Custom software, branding, and performance marketing capabilities designed to scale your business.');
-  
   return (
     <div className="flex flex-col w-full text-white">
+      <SEO 
+        title="Our Services"
+        description="Explore our end-to-end digital services at ZYQITEK: bespoke web and mobile software engineering, UI/UX product design, brand identity systems, and performance marketing."
+        keywords="Our Services, ZYQITEK services, custom web development, mobile app development, UI UX design, performance marketing, brand identity"
+        canonical="/services"
+        schema={getBreadcrumbSchema([
+          { name: 'Home', path: '/' },
+          { name: 'Our Services', path: '/services' }
+        ])}
+      />
       {/* HERO */}
       <section className="pt-24 pb-16 md:pt-32 md:pb-24 px-6">
         <div className="container mx-auto max-w-4xl text-center">

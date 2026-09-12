@@ -1,8 +1,9 @@
 import { motion } from 'motion/react';
 import { CTASection } from '../components/ui/CTASection';
 import { Button } from '../components/ui/Button';
-import { useDocumentTitle } from '../hooks/useDocumentTitle';
+import { SEO } from '../components/SEO';
 import { CONTACT, LINKS } from '../config/constants';
+import { getBreadcrumbSchema } from '../utils/structuredData';
 import { 
   Rocket, 
   Code2, 
@@ -15,8 +16,6 @@ import {
 } from 'lucide-react';
 
 export function Careers() {
-  useDocumentTitle('Careers', 'Join our team of engineers, designers, and strategists building digital solutions.');
-
   const benefits = [
     {
       title: "Real Client Impact",
@@ -52,6 +51,16 @@ export function Careers() {
 
   return (
     <div className="flex flex-col w-full text-white">
+      <SEO 
+        title="Careers"
+        description="Explore career opportunities at ZYQITEK. We're hiring senior full-stack developers, UI/UX designers, and growth marketers to build premier digital products."
+        keywords="Careers, ZYQITEK careers, tech jobs, software engineering jobs, UI UX designer hiring, digital agency jobs, remote developer roles"
+        canonical="/careers"
+        schema={getBreadcrumbSchema([
+          { name: 'Home', path: '/' },
+          { name: 'Careers', path: '/careers' }
+        ])}
+      />
       {/* HERO */}
       <section className="pt-24 pb-16 md:pt-32 md:pb-20 px-6 border-b border-white/10">
         <div className="container mx-auto max-w-4xl text-center">
@@ -190,7 +199,7 @@ export function Careers() {
 
           <div className="bg-zinc-900/40 backdrop-blur-md border border-white/10 rounded-2xl p-6 max-w-xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="text-left">
-              <h4 className="text-sm font-bold text-white mb-0.5">Custom inquiry or portfolio?</h4>
+              <h3 className="text-sm font-bold text-white mb-0.5">Custom inquiry or portfolio?</h3>
               <p className="text-xs text-zinc-400">Email our talent lead directly.</p>
             </div>
             <Button href={`mailto:${CONTACT.careers.email}?subject=Application`} variant="secondary" className="w-full sm:w-auto text-xs py-2 px-4 whitespace-nowrap">
@@ -203,8 +212,8 @@ export function Careers() {
       <CTASection 
         heading="Not looking right now?"
         subheading="Follow our work and stay updated on future openings."
-        primaryCtaText="Follow on LinkedIn"
-        primaryCtaLink={LINKS.socials.linkedin}
+        primaryCtaText="Follow on Instagram"
+        primaryCtaLink={LINKS.socials.instagram}
       />
     </div>
   );

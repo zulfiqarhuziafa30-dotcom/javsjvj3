@@ -1,18 +1,50 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import Typewriter from 'typewriter-effect';
 import { Button } from '../components/ui/Button';
 import { SectionHeading } from '../components/ui/SectionHeading';
 import { BlogCard } from '../components/ui/BlogCard';
 import { CTASection } from '../components/ui/CTASection';
-import { ProcessRoadmap } from '../components/ui/ProcessRoadmap';
 import { LINKS } from "../config/constants";
-import { useDocumentTitle } from '../hooks/useDocumentTitle';
+import { SEO } from '../components/SEO';
+import { getHomeStructuredData } from '../utils/structuredData';
 import { ArrowRight, Code2, Palette, TrendingUp, ShieldCheck, Zap, Layers } from 'lucide-react';
 
 export function Home() {
-  useDocumentTitle('Home', 'ZYQITEK is a digital agency focused on engineering, design, and growth.');
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+
+  // Dynamically generate schema.org Organization and LocalBusiness structured data
+  const jsonLdStructuredData = useMemo(() => {
+    const currentOrigin = typeof window !== 'undefined' && window.location.origin 
+      ? window.location.origin 
+      : undefined;
+    return getHomeStructuredData(currentOrigin);
+  }, []);
+
+  const jsonLdString = useMemo(() => {
+    return JSON.stringify(jsonLdStructuredData);
+  }, [jsonLdStructuredData]);
+
+  // Synchronize dynamic JSON-LD script in document head for optimal crawler indexing
+  useEffect(() => {
+    const scriptId = 'zyqitek-home-jsonld';
+    let scriptElement = document.getElementById(scriptId) as HTMLScriptElement | null;
+    if (!scriptElement) {
+      scriptElement = document.createElement('script');
+      scriptElement.id = scriptId;
+      scriptElement.type = 'application/ld+json';
+      document.head.appendChild(scriptElement);
+    }
+    scriptElement.textContent = jsonLdString;
+
+    return () => {
+      const existing = document.getElementById(scriptId);
+      if (existing) {
+        existing.remove();
+      }
+    };
+  }, [jsonLdString]);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -24,6 +56,20 @@ export function Home() {
 
   return (
     <div className="flex flex-col w-full text-white">
+      {/* Dynamically generated JSON-LD structured data script for search engine indexing */}
+      <script
+        id="home-jsonld-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: jsonLdString }}
+      />
+
+      <SEO 
+        title="ZYQITEK — IT Solutions in One Place"
+        description="ZYQITEK provides web development, branding, and growth marketing — all your digital needs in one place."
+        keywords="IT solutions, web development, custom software, digital agency, branding, UI UX design, growth marketing, ZYQITEK"
+        canonical="/"
+        schema={jsonLdStructuredData}
+      />
       {/* HERO */}
       <section className="pt-24 pb-20 md:pt-36 md:pb-28 px-6 text-center">
         <div className="container mx-auto max-w-4xl">
@@ -113,10 +159,10 @@ export function Home() {
                   ))}
                 </div>
               </div>
-              <a href="/services#development" className="text-sm font-semibold text-[#B0A08D] hover:text-[#C5B7A6] flex items-center gap-2 group transition-colors">
+              <Link to="/services#development" className="text-sm font-semibold text-[#B0A08D] hover:text-[#C5B7A6] flex items-center gap-2 group transition-colors">
                 <span>View Tech Details</span>
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </a>
+              </Link>
             </div>
 
             {/* Capability 02 */}
@@ -138,10 +184,10 @@ export function Home() {
                   ))}
                 </div>
               </div>
-              <a href="/services#creative" className="text-sm font-semibold text-[#B0A08D] hover:text-[#C5B7A6] flex items-center gap-2 group transition-colors">
+              <Link to="/services#creative" className="text-sm font-semibold text-[#B0A08D] hover:text-[#C5B7A6] flex items-center gap-2 group transition-colors">
                 <span>View Creative Details</span>
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </a>
+              </Link>
             </div>
 
             {/* Capability 03 */}
@@ -163,10 +209,10 @@ export function Home() {
                   ))}
                 </div>
               </div>
-              <a href="/services#growth" className="text-sm font-semibold text-[#B0A08D] hover:text-[#C5B7A6] flex items-center gap-2 group transition-colors">
+              <Link to="/services#growth" className="text-sm font-semibold text-[#B0A08D] hover:text-[#C5B7A6] flex items-center gap-2 group transition-colors">
                 <span>View Growth Details</span>
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -214,18 +260,6 @@ export function Home() {
         </div>
       </section>
 
-      {/* PROCESS ROADMAP - Visual Animated Timeline */}
-      <section className="py-20 md:py-28 px-6 border-t border-white/10">
-        <div className="container mx-auto max-w-7xl">
-          <SectionHeading 
-            heading="How we work."
-            subheading="A four-phase framework from discovery to sustainable growth."
-          />
-
-          <ProcessRoadmap />
-        </div>
-      </section>
-
       {/* INSIGHTS / BLOG PREVIEW */}
       <section className="py-20 md:py-28 px-6 border-t border-white/10">
         <div className="container mx-auto max-w-7xl">
@@ -239,19 +273,19 @@ export function Home() {
               category="Agency"
               title="About ZYQITEK: Digital Solutions That Last"
               excerpt="Our philosophy on why 95% of clients return for ongoing partnerships."
-              link="/blog"
+              link="/blog/about-zyqitek"
             />
             <BlogCard 
               category="Strategy"
               title="Why Your Digital Presence Needs More Than a Site"
               excerpt="Connecting technology, branding, and conversion into one ecosystem."
-              link="/blog"
+              link="/blog/why-your-digital-presence-needs-more-than-a-website"
             />
             <BlogCard 
               category="Technology"
               title="How Modern Technology Helps Businesses Scale"
               excerpt="Architectural principles for investing in software that avoids rewrite debt."
-              link="/blog"
+              link="/blog/how-modern-technology-helps-businesses-scale"
             />
           </div>
         </div>

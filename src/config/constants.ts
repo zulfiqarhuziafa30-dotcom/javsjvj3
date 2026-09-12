@@ -1,3 +1,5 @@
+export const SITE_URL = 'https://zyqitek.com';
+
 export const CONTACT = {
   general: {
     email: 'zyqitek@gmail.com',
@@ -16,9 +18,8 @@ export const LINKS = {
     careersApplication: 'https://docs.google.com/forms/d/e/1FAIpQLSdUKOZHBw_iQlRlc4PHDRZnxl2_4ggMj33waLeBbH0n_MwH2A/viewform?usp=header',
   },
   socials: {
-    twitter: '#',
-    linkedin: '#',
-    instagram: '#',
-    github: '#',
+    instagram: 'https://www.instagram.com/zyqitektechnologies/',
+    facebook: 'https://www.facebook.com/people/Zyqitek-Technologies/61594383567788/',
+    whatsapp: 'https://wa.me/923442897220',
   }
 };

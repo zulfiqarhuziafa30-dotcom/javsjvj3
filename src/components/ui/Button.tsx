@@ -25,7 +25,7 @@ export function Button({ variant = 'primary', className, href, target, rel, chil
   const classes = cn(baseStyles, variants[variant], className);
 
   if (href) {
-    const isExternal = href.startsWith('http') || href.startsWith('mailto:');
+    const isExternal = href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('tel:');
     if (isExternal) {
       return (
         <a href={href} className={classes} target={target} rel={rel}>
